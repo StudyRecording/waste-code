@@ -1,9 +1,25 @@
  
-- image: 图片 URL
-  title: 图片标题
-  description: Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec euismod
+- image: https://studyrecording.github.io/waste-code/images/picture/1.jpg
+  title: 枝头几朵花
+  description: 两颗枯树中仅剩的花朵
  
-- image: https://picsum.photos/id/12/2500/1800
-  title: Lorem ipsum
-  description: Lorem ipsum dolor sit amet
+- image: https://studyrecording.github.io/waste-code/images/picture/2.jpg
+  title: 野花
+  description: 随便拍的
+
+ - image: https://studyrecording.github.io/waste-code/images/picture/3.jpg
+  title: 居民楼
+  description: 很有年代感，很有烟火器
+
+  - image: https://studyrecording.github.io/waste-code/images/picture/4.jpg
+  title: 小河
+  description: 旁边的房子已经没人住了
+
+  - image: https://studyrecording.github.io/waste-code/images/picture/5.jpg
+  title: 河
+  description: 练一下引导线构图
+
+  - image: https://studyrecording.github.io/waste-code/images/picture/6.jpg
+  title: 雨天的一朵花
+  description: 手机随便拍的
  

@@ -99,7 +99,7 @@ home_banner:
   # Whether to enable home banner
   enable: true
   # style of home banner
-  style: static # static or fixed
+  style: fixed # static or fixed
   # Home banner image
   image: 
     light: https://studyrecording.github.io/waste-code/images/wallhaven-wqery6-light.webp  # light mode
@@ -363,13 +363,13 @@ plugins:
     enable: false # Whether to enable
   # Aplayer. See https://github.com/DIYgod/APlayer
   aplayer:
-    enable: false # Whether to enable
-    type: fixed # fixed, mini
+    enable: true # Whether to enable
+    type: mini # fixed, mini
     audios:
-      - name: # audio name
-        artist: # audio artist
-        url: # audio url
-        cover: # audio cover url
+      - name: See The Fire In Your Eyes # audio name
+        artist: Various Artists # audio artist
+        url: http://m10.music.126.net/20230521043310/98e29b919dea43f3818d873588abd1ee/ymusic/5352/045b/035f/d89aadbfa431671cb79c4591c1edd0ee.mp3 # audio url
+        cover: https://p2.music.126.net/_TZv2QQGvisSuWXPSgUNiw==/109951163807703601.jpg?param=90y90 # audio cover url
       # - name: # audio name
       #   artist: # audio artist
       #   url: # audio url
