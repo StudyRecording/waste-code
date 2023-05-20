@@ -1,10 +1,11 @@
 ---
 title: 关于我
 date: 2023-05-21 04:38:16
+thumbnail: https://t.mwm.moe/ycy
+cover: https://t.mwm.moe/pc
 ---
 
 # 关于
-
 ## 现状
 - 职业: Java开发工程师
 - 年限: 3年
