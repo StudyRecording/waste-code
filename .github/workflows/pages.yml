@@ -47,9 +47,9 @@ jobs:
       #   run: git rm -f --cached themes/tenacity
         # run: git submodule deinit themes/tenacity && git rm themes/tenacity
       # 安装主题
-      - name: Install Theme
-        # run: git submodule add https://github.com/all-smile/tenacity.git themes/tenacity
-        run: git submodule add https://github.com/Fechin/hexo-theme-diaspora.git themes/diaspora
+      # - name: Install Theme
+      #   # run: git submodule add https://github.com/all-smile/tenacity.git themes/tenacity
+      #   run: git submodule add https://github.com/Fechin/hexo-theme-diaspora.git themes/diaspora
       - name: Clean
         run: npm run clean
       - name: Build
