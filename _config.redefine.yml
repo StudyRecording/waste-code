@@ -262,7 +262,7 @@ articles:
   author_label: 
     enable: true # Whether to enable
     auto: false # Whether to automatically add author label, e.g. Lv1, Lv2, Lv3...
-    list: []
+    list: ["vvvvvvvip"]
   # Code block settings
   code_block:
     copy: true # Whether to enable code block copy button
@@ -291,7 +291,7 @@ articles:
     # Max number of articles to display
     limit: 3
     # Placeholder image
-    placeholder: /images/wallhaven-wqery6-light.webp
+    placeholder: https://studyrecording.github.io/waste-code/images/wallhaven-wqery6-light.webp
     # Skip directory
     skip_dirs: []
 # ARTICLE <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< end
@@ -300,9 +300,9 @@ articles:
 # COMMENT >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> start
 comment:
   # Whether to enable comment
-  enable: false
+  enable: true
   # Comment system
-  system: waline # waline, gitalk, twikoo
+  system: gitalk # waline, gitalk, twikoo
   # System configuration
   config:
     # Waline comment system. See https://waline.js.org/
@@ -311,10 +311,10 @@ comment:
       lang: zh-CN # Waline language. e.g. zh-CN, en-US. See https://waline.js.org/guide/client/i18n.html
     # Gitalk comment system. See https://github.com/gitalk/gitalk
     gitalk:
-      clientID: # GitHub Application Client ID
-      clientSecret: # GitHub Application Client Secret
-      repo: # GitHub repository
-      owner: # GitHub repository owner
+      clientID: 4ee48e84d9802f875d3b # GitHub Application Client ID
+      clientSecret: 516f92d054ca2aa3c7aaa12dc8f2ea0599454871 # GitHub Application Client Secret
+      repo: waste-code-comment # GitHub repository
+      owner: StudyRecording # GitHub repository owner
     # Twikoo comment system. See https://twikoo.js.org/
     twikoo:
       version: 1.6.10 # Twikoo version, do not modify if you dont know what it is
