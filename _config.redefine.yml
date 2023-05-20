@@ -62,8 +62,8 @@ global:
     scale: false # scale effect
   # Scroll progress
   scroll_progress:
-    bar: false # progress bar
-    percentage: true # percentage
+    bar: true # progress bar
+    percentage: false # percentage
   # Website counter (powered by https://busuanzi.ibruce.info/)
   busuanzi_counter:
     enable: true # enable website counter or not
@@ -108,7 +108,7 @@ home_banner:
   title: Waste Code
   # Home banner subtitle
   subtitle:
-    text: ["凡心所向，素履以往，生如逆旅，一苇以航"] # subtitle text, array
+    text: ["凡心所向，素履以往", "生如逆旅，一苇以航"] # subtitle text, array
     hitokoto:  # 一言配置
       enable: false # Whether to enable hitokoto
       api: https://v1.hitokoto.cn # API URL, can add types, see https://developer.hitokoto.cn/sentence/#%E5%8F%A5%E5%AD%90%E7%B1%BB%E5%9E%8B-%E5%8F%82%E6%95%B0
@@ -125,11 +125,11 @@ home_banner:
   # Specific style of the text
   text_style: 
     # Title font size
-    title_size: 2.8rem
+    title_size: 3.8rem
     # Subtitle font size
-    subtitle_size: 1.5rem
+    subtitle_size: 2.0rem
     # Line height between title and subtitle
-    line_height: 1.2
+    line_height: 1.5
   # Home banner custom font
   custom_font: 
     # Whether to enable custom font
@@ -141,7 +141,7 @@ home_banner:
   # Home banner social links
   social_links:
     # Whether to enable
-    enable: true
+    enable: false
     # Social links
     links:
       # github:  # your GitHub URL
