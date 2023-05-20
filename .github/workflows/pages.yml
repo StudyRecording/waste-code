@@ -53,7 +53,8 @@ jobs:
       - name: Install Theme Search
         run: npm install hexo-generator-searchdb --save
       - name: Install Other Dependencies
-        run: npm install hexo-wordcount nodejieba@2.5.2 hexo-filter-mermaid-diagrams hexo-all-minifier
+      # nodejieba@2.5.2
+        run: npm install hexo-wordcount nodejieba hexo-filter-mermaid-diagrams hexo-all-minifier
       # - name: Update Theme Config
       #   run: mv theme_config.yml themes/tranquility/_config.yml
       - name: Clean
