@@ -1,8 +1,10 @@
 ---
 title: Hello World
 date: 2023-05-20 11:45:14
-tags: [测试]
-categories: [测试]
+tags: 
+  - 测试
+categories: 
+  - 测试
 excerpt: "这是文章摘要，主要描述如何启动hexo博客"
 thumbnail: "https://t.mwm.moe/ycy"
 cover: "https://t.mwm.moe/pc"
