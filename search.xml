@@ -1,6 +1,60 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>Docker常用命令</title>
+    <url>/waste-code/2023/05/20/Docker%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/</url>
+    <content><![CDATA[<h1 id="Docker常用使用命令"><a href="#Docker常用使用命令" class="headerlink" title="Docker常用使用命令"></a>Docker常用使用命令</h1><h2 id="基本命令"><a href="#基本命令" class="headerlink" title="基本命令"></a>基本命令</h2><ul>
+<li><code>docker version</code> docker版本</li>
+<li><code>docker info</code> docker信息</li>
+<li><code>docker --help</code> docker命令帮助</li>
+</ul>
+<h2 id="容器命令"><a href="#容器命令" class="headerlink" title="容器命令"></a>容器命令</h2><ul>
+<li>根据镜像新建并启动容器<code>docker run -d -p &#123;宿主机端口&#125;:&#123;容器端口&#125; -v &#123;宿主机文件路径&#125;:&#123;容器文件路径&#125; --name &#123;容器名别名&#125; &#123;镜像名&#125;:&#123;镜像版本&#125;</code><ul>
+<li><code>-d</code>: 后台运行</li>
+<li><code>-p</code>：端口映射</li>
+<li><code>-v</code>：文件路径映射</li>
+<li><code>--name</code> ：容器命名</li>
+</ul>
+</li>
+<li>列出当前所有正在运行的容器<code>docker ps</code></li>
+<li>列出所有容器<code>docker ps -a</code></li>
+<li>启动容器<code>docker start &#123;容器id/容器名&#125;</code></li>
+<li>重新启动容器<code>docker restart &#123;容器id/容器名&#125;</code></li>
+<li>停止容器<code>docker stop &#123;容器id/容器名&#125;</code></li>
+<li>强制停止容器<code>docker kill &#123;容器id/容器名&#125;</code></li>
+<li>删除容器<code>docker rm &#123;容器id/容器名&#125;</code></li>
+<li>强制删除容器<code>docker rm -f &#123;容器id/容器名&#125;</code></li>
+<li>查看容器日志<code>docker logs -f -t --since --tail &#123;容器id/容器名&#125;</code><ul>
+<li>eg : <code>docker logs -f -t --since=&quot;2022-02-28&quot; --tail=10 redis</code></li>
+<li><code>-f</code>: 实时查看日志</li>
+<li><code>-t</code> : 显示日志时间</li>
+<li><code>--since=&quot;2022-02-28&quot;</code> ： 只输出2022-02-28及其之后的日志</li>
+<li><code>--tail=10</code>：查看最后10条日志</li>
+</ul>
+</li>
+<li>查看容器内运行的进程<code>docker top &#123;容器id/容器名&#125;</code></li>
+<li>进入到容器内<code>docker exec -it &#123;容器id&#125; bash</code></li>
+<li>将容器内文件拷贝到宿主机<code>docker cp &#123;容器id&#125;:&#123;容器内文件路径&#125; &#123;宿主机文件路径&#125;</code><ul>
+<li>eg：<code>docker cp 2c003a469ae3:/usr/local/etc/redis/redis.conf /Users/hpc/DockerFileSystem/redis/conf/</code></li>
+</ul>
+</li>
+</ul>
+<h2 id="镜像命令"><a href="#镜像命令" class="headerlink" title="镜像命令"></a>镜像命令</h2><ul>
+<li>查看镜像<code>docker images</code></li>
+<li>列出本地所有镜像<code>docker images -a</code></li>
+<li>拉取镜像<code>docker pull &#123;镜像名&#125;:&#123;镜像版本&#125;</code></li>
+<li>删除镜像<code>docker rmi &#123;镜像名&#125;</code></li>
+<li>强制删除镜像<code>docker rmi -f &#123;镜像名/镜像id&#125;</code></li>
+</ul>
+]]></content>
+      <categories>
+        <category>docker</category>
+      </categories>
+      <tags>
+        <tag>docker</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Hello World</title>
     <url>/waste-code/2023/05/20/hello-world/</url>
     <content><![CDATA[<p>Welcome to <a class="link"   href="https://hexo.io/" >Hexo <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a>! This is your very first post. Check <a class="link"   href="https://hexo.io/docs/" >documentation <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a> for more info. If you get any problems when using Hexo, you can find the answer in <a class="link"   href="https://hexo.io/docs/troubleshooting.html" >troubleshooting <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a> or you can ask me on <a class="link"   href="https://github.com/hexojs/hexo/issues" >GitHub <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a>.</p>
