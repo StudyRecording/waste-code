@@ -108,14 +108,14 @@ home_banner:
   title: Waste Code
   # Home banner subtitle
   subtitle:
-    text: ["凡心所向，素履以往，生如逆旅"] # subtitle text, array
+    text: ["凡心所向，素履以往，生如逆旅，一苇以航"] # subtitle text, array
     hitokoto:  # 一言配置
       enable: false # Whether to enable hitokoto
       api: https://v1.hitokoto.cn # API URL, can add types, see https://developer.hitokoto.cn/sentence/#%E5%8F%A5%E5%AD%90%E7%B1%BB%E5%9E%8B-%E5%8F%82%E6%95%B0
     typing_speed: 100 # Typing speed (ms)
-    backing_speed: 80 # Backing speed (ms)
+    backing_speed: 100 # Backing speed (ms)
     starting_delay: 500 # Start delay (ms)
-    backing_delay: 1500 # Backing delay (ms)
+    backing_delay: 3000 # Backing delay (ms)
     loop: true # Whether to loop
     smart_backspace: true # Whether to smart backspace
   # Color of home banner text
@@ -141,14 +141,16 @@ home_banner:
   # Home banner social links
   social_links:
     # Whether to enable
-    enable: false
+    enable: true
     # Social links
     links:
-      github:  # your GitHub URL
-      instagram: # your Instagram URL
-      zhihu:  # your ZhiHu URL
-      twitter:  # your twitter URL
-      email:  # your email
+      # github:  # your GitHub URL
+      # instagram: # your Instagram URL
+      # zhihu:  # your ZhiHu URL
+      # twitter:  # your twitter URL
+      # email:  # your email
+      fa-brands fa-weixin: waste-code
+      fa-brands fa-qq: 2876391688
       # ...... # you can add more
 # HOME BANNER <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< end
 
@@ -368,7 +370,7 @@ plugins:
     audios:
       - name: See The Fire In Your Eyes # audio name
         artist: Various Artists # audio artist
-        url: http://m10.music.126.net/20230521043310/98e29b919dea43f3818d873588abd1ee/ymusic/5352/045b/035f/d89aadbfa431671cb79c4591c1edd0ee.mp3 # audio url
+        url:  https://studyrecording.github.io/waste-code/music/See_The_Fire_In_Your_Eyes.mp3 # audio url
         cover: https://p2.music.126.net/_TZv2QQGvisSuWXPSgUNiw==/109951163807703601.jpg?param=90y90 # audio cover url
       # - name: # audio name
       #   artist: # audio artist
