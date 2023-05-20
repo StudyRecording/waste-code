@@ -1,12 +1,13 @@
 ---
-title: Hello Word
-date: 2023-05-12 18:38:45
-categories: 
-    - 测试
+id: 1
+title: Hello World
+date: 2022-11-30 23:23:48
 tags: 
-    - 测试
-mp3: http://domain.com/awesome.mp3
-cover: http://domain.com/awesome.jpg
+- 测试
+categories: developer
+cover: /assets/images/57-1.jpg
+timeline: article  # 展示在列表中
+toc: true
 ---
 Welcome to [Hexo](https://hexo.io/)! This is your very first post. Check [documentation](https://hexo.io/docs/) for more info. If you get any problems when using Hexo, you can find the answer in [troubleshooting](https://hexo.io/docs/troubleshooting.html) or you can ask me on [GitHub](https://github.com/hexojs/hexo/issues).
 
