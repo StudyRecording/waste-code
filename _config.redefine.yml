@@ -190,7 +190,7 @@ navbar:
       submenus:
         Me: /about
         Github: https://github.com/StudyRecording
-        Blog: https://StudyRecording.github.io
+        Blog: https://StudyRecording.github.io/waste-code
         Friends: /links/
     # Links: 
     #   icon: fa-regular fa-link
