@@ -25,7 +25,7 @@ defaults:
   # Site logo
   logo: /images/waste-code.svg 
   # Site avatar
-  avatar: https://github.com/StudyRecording/waste-code/blob/gh-pages/images/avatar.jpg
+  avatar: /images/avatar.jpg
 # IMAGE CONFIGURATION <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< end
 
 
@@ -176,10 +176,10 @@ navbar:
     Tags:
       icon: fa-regular fa-house
       path: /tags/
-    Essays:
+    日志:
       icon: fa-regular fa-messages
       path: /essays/
-    Masonry:
+    图片:
       icon: fa-regular fa-image
       path: /masonry/
     # Status: 
