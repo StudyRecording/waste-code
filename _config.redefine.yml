@@ -105,7 +105,7 @@ home_banner:
     light: /images/wallhaven-wqery6-light.webp # light mode
     dark: /images/wallhaven-wqery6-dark.webp # dark mode
   # Home banner title
-  title: Theme Redefine
+  title: Waste Code
   # Home banner subtitle
   subtitle:
     text: [] # subtitle text, array
@@ -211,13 +211,16 @@ home:
     first_item: menu # First item in sidebar. menu, info
     announcement: # Announcement text
     links:
-      Archives: 
+      # Archives: 
+      归档:
         path: /archives 
         icon: fa-regular fa-archive # can be empty
-      Tags: 
+      # Tags: 
+      标签: 
         path: /tags 
         icon: fa-regular fa-tags # can be empty
-      Categories: 
+      # Categories: 
+      分类: 
         path: /categories 
         icon: fa-regular fa-folder # can be empty
       # ...... # you can add more
