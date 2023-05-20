@@ -51,7 +51,7 @@ jobs:
         # run: git submodule add https://github.com/all-smile/tenacity.git themes/tenacity
         run: git submodule add https://github.com/hooozen/hexo-theme-tranquility.git themes/tranquility
       - name: Install Theme Dependencies
-        run: npm install hexo-pagination moment opentype.js
+        run: cd themes/tranquility && npm install hexo-pagination moment opentype.js
       - name: Update Theme Config
         run: mv theme_config.yml themes/tranquility/_config.yml
       - name: Clean
