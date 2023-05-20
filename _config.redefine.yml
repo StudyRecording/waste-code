@@ -21,11 +21,11 @@ info:
 # IMAGE CONFIGURATION >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> start
 defaults:
   # Favicon
-  favicon: /images/waste-code.svg
+  favicon: /images/waste-code.svg 
   # Site logo
-  logo: /images/waste-code.svg
+  logo: /images/waste-code.svg 
   # Site avatar
-  avatar: /images/avatar.jpg 
+  avatar: https://github.com/StudyRecording/waste-code/blob/gh-pages/images/avatar.jpg
 # IMAGE CONFIGURATION <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< end
 
 
