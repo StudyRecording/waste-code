@@ -41,7 +41,7 @@ external_link:
   exclude: ''
 filename_case: 0
 render_drafts: false
-post_asset_folder: false
+post_asset_folder: true
 relative_link: false
 future: true
 highlight:
@@ -99,7 +99,7 @@ ignore:
 ## Plugins: https://hexo.io/plugins/
 ## Themes: https://hexo.io/themes/
 # theme: landscape
-theme: tranquility
+theme: redefine
 # Deployment
 ## Docs: https://hexo.io/docs/one-command-deployment
 deploy:
@@ -107,3 +107,6 @@ deploy:
   repo: git@github.com:StudyRecording/waste-code.git
   branch: gh-pages
   message: ${{ github.event.head_commit.message }}
+
+# 压缩资源文件
+all_minifier: true
