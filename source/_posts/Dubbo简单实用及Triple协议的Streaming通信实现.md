@@ -138,7 +138,7 @@ Triple协议的Stream通信主要分为三种：服务端流、客户端流、�
 
 ### Streaming流通信实现
 #### 服务端流(SERVER_STREAM)请求流程
-<img src="./Dubbo%E7%AE%80%E5%8D%95%E5%AE%9E%E7%94%A8%E5%8F%8ATriple%E5%8D%8F%E8%AE%AE%E7%9A%84Streaming%E9%80%9A%E4%BF%A1%E5%AE%9E%E7%8E%B0/image-1661691742134.png" alt="服务端流(SERVER_STREAM)" width="400">
+<img src="https://studyrecording.github.io/waste-code/Dubbo%E7%AE%80%E5%8D%95%E5%AE%9E%E7%94%A8%E5%8F%8ATriple%E5%8D%8F%E8%AE%AE%E7%9A%84Streaming%E9%80%9A%E4%BF%A1%E5%AE%9E%E7%8E%B0/image-1661691742134.png" alt="服务端流(SERVER_STREAM)" width="400">
 
 #### 服务端流(SERVER_STREAM)的Java实现
 
@@ -222,10 +222,10 @@ Triple协议的Stream通信主要分为三种：服务端流、客户端流、�
     }
     ```
 #### 客户端流(CLIENT_STREAM)请求流程
-<img src="./Dubbo%E7%AE%80%E5%8D%95%E5%AE%9E%E7%94%A8%E5%8F%8ATriple%E5%8D%8F%E8%AE%AE%E7%9A%84Streaming%E9%80%9A%E4%BF%A1%E5%AE%9E%E7%8E%B0/image-1661692170936.png" alt="客户端流(CLIENT_STREAM)" width="400">
+<img src="https://studyrecording.github.io/waste-code/Dubbo%E7%AE%80%E5%8D%95%E5%AE%9E%E7%94%A8%E5%8F%8ATriple%E5%8D%8F%E8%AE%AE%E7%9A%84Streaming%E9%80%9A%E4%BF%A1%E5%AE%9E%E7%8E%B0/image-1661692170936.png" alt="客户端流(CLIENT_STREAM)" width="400">
 
 #### 双向流(BIDIRECTIONAL_STREAM)请求流程
-<img src="./Dubbo%E7%AE%80%E5%8D%95%E5%AE%9E%E7%94%A8%E5%8F%8ATriple%E5%8D%8F%E8%AE%AE%E7%9A%84Streaming%E9%80%9A%E4%BF%A1%E5%AE%9E%E7%8E%B0/image-1661692263642.png" alt="双向流(BIDIRECTIONAL_STREAM)" width="400">
+<img src="https://studyrecording.github.io/waste-code/Dubbo%E7%AE%80%E5%8D%95%E5%AE%9E%E7%94%A8%E5%8F%8ATriple%E5%8D%8F%E8%AE%AE%E7%9A%84Streaming%E9%80%9A%E4%BF%A1%E5%AE%9E%E7%8E%B0/image-1661692263642.png" alt="双向流(BIDIRECTIONAL_STREAM)" width="400">
 
 #### 客户端流(CLIENT_STREAM)/双向流(BIDIRECTIONAL_STREAM)的Java实现
 1. 客户端流和双向流在Java中的实现方式是同一种

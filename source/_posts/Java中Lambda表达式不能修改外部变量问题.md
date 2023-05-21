@@ -13,7 +13,7 @@ date: 2022-08-20 15:41:40
 
 ## 问题
 在代码Lambda表达式中访问了外部的局部变量，在IDEA中会报检查错误：
-![image](./Java%E4%B8%ADLambda%E8%A1%A8%E8%BE%BE%E5%BC%8F%E4%B8%8D%E8%83%BD%E4%BF%AE%E6%94%B9%E5%A4%96%E9%83%A8%E5%8F%98%E9%87%8F%E9%97%AE%E9%A2%98/image.png)
+![image](Java%E4%B8%ADLambda%E8%A1%A8%E8%BE%BE%E5%BC%8F%E4%B8%8D%E8%83%BD%E4%BF%AE%E6%94%B9%E5%A4%96%E9%83%A8%E5%8F%98%E9%87%8F%E9%97%AE%E9%A2%98/image.png)
 
 ## 已知前提
 1. num是方法中的局部变量
@@ -28,11 +28,11 @@ date: 2022-08-20 15:41:40
 
 ## 解决方案
 如报错提示中一样定义成原子类便可，如下图
-![image-1660980442426](./Java%E4%B8%ADLambda%E8%A1%A8%E8%BE%BE%E5%BC%8F%E4%B8%8D%E8%83%BD%E4%BF%AE%E6%94%B9%E5%A4%96%E9%83%A8%E5%8F%98%E9%87%8F%E9%97%AE%E9%A2%98/image-1660980442426.png)
+![image-1660980442426](Java%E4%B8%ADLambda%E8%A1%A8%E8%BE%BE%E5%BC%8F%E4%B8%8D%E8%83%BD%E4%BF%AE%E6%94%B9%E5%A4%96%E9%83%A8%E5%8F%98%E9%87%8F%E9%97%AE%E9%A2%98/image-1660980442426.png)
 这里AtomicInteger实际上的作用是引用类型，在方法调用时实际上传的是指向num的内存地址的值，因此在匿名内部类中指向的值与外部变量num执行的值是同一个，当然原子类也同时保证的并发访问的安全性。当然，这里的主要作用是将数据变为引用类型，方便传递后匿名内部类的值和匿名内部类外部的值指向的是同一块内存地址的值，如下图所示改变也可以
-![image-1660980918060](./Java%E4%B8%ADLambda%E8%A1%A8%E8%BE%BE%E5%BC%8F%E4%B8%8D%E8%83%BD%E4%BF%AE%E6%94%B9%E5%A4%96%E9%83%A8%E5%8F%98%E9%87%8F%E9%97%AE%E9%A2%98/image-1660980918060.png)
+![image-1660980918060](Java%E4%B8%ADLambda%E8%A1%A8%E8%BE%BE%E5%BC%8F%E4%B8%8D%E8%83%BD%E4%BF%AE%E6%94%B9%E5%A4%96%E9%83%A8%E5%8F%98%E9%87%8F%E9%97%AE%E9%A2%98/image-1660980918060.png)
 
 ## 注意
 既然变为引用变量就可以，使用Integer类型可不可以呢？
-![image-1660981012175](./Java%E4%B8%ADLambda%E8%A1%A8%E8%BE%BE%E5%BC%8F%E4%B8%8D%E8%83%BD%E4%BF%AE%E6%94%B9%E5%A4%96%E9%83%A8%E5%8F%98%E9%87%8F%E9%97%AE%E9%A2%98/image-1660981012175.png)
+![image-1660981012175](Java%E4%B8%ADLambda%E8%A1%A8%E8%BE%BE%E5%BC%8F%E4%B8%8D%E8%83%BD%E4%BF%AE%E6%94%B9%E5%A4%96%E9%83%A8%E5%8F%98%E9%87%8F%E9%97%AE%E9%A2%98/image-1660981012175.png)
 如上图所示，IDEA同样会报错的，因为Integer类型在传到匿名内部类中会进行拆箱操作，因此相当于基本类型的值传递。
