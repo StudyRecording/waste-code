@@ -7,7 +7,7 @@ tags:
 categories:
   - 分布式
 excerpt: Dubbo的简单使用，Triple的协议和实现
-thumbnail: https://www.dmoe.cc/random.php
+thumbnail: https://cdn.cdnjson.com/tvax3.sinaimg.cn//large/0072Vf1pgy1fodqiguph4j31hc0xcqg9.jpg
 cover: https://t.mwm.moe/pc
 sticky: 1
 date: 2022-08-28 19:36:30

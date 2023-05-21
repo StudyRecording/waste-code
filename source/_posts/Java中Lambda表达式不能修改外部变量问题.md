@@ -5,7 +5,7 @@ tags:
 categories:
   - Java
 excerpt: 分析Java中Lambda表达式不能修改外部变量的问题原因以及根据原因找到相关的解决方式
-thumbnail: https://t.mwm.moe/ycy
+thumbnail: https://cdn.cdnjson.com/tvax3.sinaimg.cn//large/0072Vf1pgy1fodqita158j31j60yhtme.jpg
 cover: https://t.mwm.moe/pc
 sticky: 1
 date: 2022-08-20 15:41:40

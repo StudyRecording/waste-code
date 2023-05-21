@@ -5,7 +5,7 @@ tags:
 categories:
   - 线上问题
 excerpt: 线上CPU升高的原因和排查方向, 以及部分查看排查时查看信息的命令
-thumbnail: https://t.mwm.moe/ycy
+thumbnail: https://cdn.cdnjson.com/tvax3.sinaimg.cn//large/0072Vf1pgy1foxkd8fiqgj31hc0u0h3v.jpg
 cover: https://t.mwm.moe/pc
 sticky: 1
 date: 2022-08-17 21:32:01
