@@ -12,7 +12,7 @@ date: 2022-08-13 05:06:20
 ---
 
 # Docker常用使用命令
-![头像](avatar.jpg)
+![头像](Docker常用命令/avatar.jpg)
 ## 基本命令
 - `docker version` docker版本
 - `docker info` docker信息
