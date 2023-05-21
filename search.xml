@@ -2,7 +2,7 @@
 <search>
   <entry>
     <title>Docker常用命令</title>
-    <url>/waste-code/2023/05/20/Docker%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/</url>
+    <url>/waste-code/2022/08/12/Docker%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/</url>
     <content><![CDATA[<h1 id="Docker常用使用命令"><a href="#Docker常用使用命令" class="headerlink" title="Docker常用使用命令"></a>Docker常用使用命令</h1><h2 id="基本命令"><a href="#基本命令" class="headerlink" title="基本命令"></a>基本命令</h2><ul>
 <li><code>docker version</code> docker版本</li>
 <li><code>docker info</code> docker信息</li>
@@ -48,10 +48,191 @@
 </ul>
 ]]></content>
       <categories>
-        <category>docker</category>
+        <category>运维与部署</category>
       </categories>
       <tags>
-        <tag>docker</tag>
+        <tag>Docker</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Dubbo简单实用及Triple协议的Streaming通信实现</title>
+    <url>/waste-code/2022/08/28/Dubbo%E7%AE%80%E5%8D%95%E5%AE%9E%E7%94%A8%E5%8F%8ATriple%E5%8D%8F%E8%AE%AE%E7%9A%84Streaming%E9%80%9A%E4%BF%A1%E5%AE%9E%E7%8E%B0/</url>
+    <content><![CDATA[<h2 id="文章概览"><a href="#文章概览" class="headerlink" title="文章概览"></a>文章概览</h2><ul>
+<li>项目模块  <ol>
+<li>common模块——实现实体类以及声明暴露的api接口</li>
+<li>provider模块——暴露的api接口的业务实现</li>
+<li>consumer模块——请求接口的实现，将会待用暴露的api接口</li>
+</ol>
+</li>
+<li>GITHUB: <a class="link"   href="https://github.com/StudyRecording/dubbo-sample" >Dubbo的简单使用以及Triple协议的Streaming通信的实现 <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a></li>
+<li>官方文档: <a class="link"   href="https://dubbo.apache.org/zh/docs3-v2/java-sdk/reference-manual/protocol/triple/" >Triple协议 <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a></li>
+<li>Blog目的: 记录实现过程及出现的问题</li>
+</ul>
+<h2 id="Dubbo的简单使用"><a href="#Dubbo的简单使用" class="headerlink" title="Dubbo的简单使用"></a>Dubbo的简单使用</h2><ol>
+<li><p>在common模块中定义实体类User</p>
+</li>
+<li><p>在common模块中声明暴露出的接口，实现接口UserService</p>
+ <div class="highlight-container" data-rel="Java"><figure class="iseeu highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">interface</span> <span class="title class_">UserService</span> &#123;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">    * 获取用户信息</span></span><br><span class="line"><span class="comment">    * <span class="doctag">@param</span> name</span></span><br><span class="line"><span class="comment">    * <span class="doctag">@return</span></span></span><br><span class="line"><span class="comment">    */</span></span><br><span class="line">    User <span class="title function_">getUserInfo</span><span class="params">(String name)</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
+</li>
+<li><p>在provider和consumer模块中引入相关依赖</p>
+ <div class="highlight-container" data-rel="Xml"><figure class="iseeu highlight xml"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.apache.dubbo<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>dubbo-spring-boot-starter<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">version</span>&gt;</span>3.0.7<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="comment">&lt;!--   下面这个包必须引用，服务注册到zookeeper中使用，之前没有引用这个包，结果应用起不来         --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.apache.dubbo<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>dubbo-registry-zookeeper<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">version</span>&gt;</span>3.0.7<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>com.sample<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>common<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">version</span>&gt;</span>0.0.1-SNAPSHOT<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br></pre></td></tr></table></figure></div></li>
+<li><p>在provider和consumer模块中创建application.yml文件并编写相关配置</p>
+ <div class="highlight-container" data-rel="Yaml"><figure class="iseeu highlight yaml"><table><tr><td class="code"><pre><span class="line"><span class="attr">server:</span></span><br><span class="line">    <span class="attr">port:</span> <span class="number">8082</span> <span class="comment"># 这里填写端口号，provider和consumer不同，</span></span><br><span class="line"><span class="attr">spring:</span></span><br><span class="line">    <span class="attr">application:</span></span><br><span class="line">        <span class="attr">name:</span> <span class="string">consumer</span></span><br><span class="line"></span><br><span class="line"><span class="attr">dubbo:</span></span><br><span class="line">    <span class="attr">protocol:</span></span><br><span class="line">        <span class="attr">name:</span> <span class="string">dubbo</span> <span class="comment"># 选择通信协议</span></span><br><span class="line">        <span class="attr">port:</span> <span class="number">-1</span></span><br><span class="line">    <span class="attr">registry:</span></span><br><span class="line">        <span class="attr">id:</span> <span class="string">zk-zookeeper</span></span><br><span class="line">        <span class="attr">address:</span> <span class="string">zookeeper://127.0.0.1:2181</span></span><br></pre></td></tr></table></figure></div>
+</li>
+<li><p>在provider和consumer中编写启动类，这里以consumer模块为例，这里要加上EnableDubbo注解</p>
+ <div class="highlight-container" data-rel="Java"><figure class="iseeu highlight java"><table><tr><td class="code"><pre><span class="line"><span class="meta">@SpringBootApplication</span></span><br><span class="line"><span class="meta">@EnableDubbo</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">ConsumerApplication</span> &#123;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span> &#123;</span><br><span class="line">        SpringApplication.run(ConsumerApplication.class, args);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div></li>
+<li><p>在provider中对UserService进行实现</p>
+ <div class="highlight-container" data-rel="Java"><figure class="iseeu highlight java"><table><tr><td class="code"><pre><span class="line">    <span class="comment">// 这里注意使用注解@DubboService，时dubbo中的Service注解，主要在对外提供服务的实现类上</span></span><br><span class="line">    <span class="meta">@DubboService</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">UserServiceImpl</span> <span class="keyword">implements</span> <span class="title class_">UserService</span> &#123;</span><br><span class="line">        <span class="meta">@Override</span></span><br><span class="line">        <span class="keyword">public</span> User <span class="title function_">getUserInfo</span><span class="params">(String name)</span> &#123;</span><br><span class="line">            <span class="type">User</span> <span class="variable">user</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">User</span>();</span><br><span class="line">            user.setName(<span class="string">&quot;dubbo&quot;</span>);</span><br><span class="line">            user.setAge(<span class="number">12</span>);</span><br><span class="line">            <span class="keyword">return</span> user;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    ```   </span><br><span class="line"></span><br><span class="line"><span class="number">5.</span> 在consumer中实现请求接口, 引用provider模块暴露出的接口要使用DubboReference注解</span><br><span class="line">    ```java</span><br><span class="line">    <span class="meta">@RestController</span></span><br><span class="line">    <span class="meta">@RequestMapping(&quot;/user&quot;)</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">UserController</span> &#123;</span><br><span class="line"></span><br><span class="line">        <span class="meta">@DubboReference</span></span><br><span class="line">        <span class="keyword">private</span> UserService userService;</span><br><span class="line"></span><br><span class="line">        <span class="meta">@GetMapping(&quot;/info&quot;)</span></span><br><span class="line">        <span class="keyword">public</span> User <span class="title function_">getUserInfo</span><span class="params">()</span> &#123;</span><br><span class="line">            <span class="keyword">return</span> userService.getUserInfo(<span class="string">&quot;xxx&quot;</span>);</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">    </span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure></div></li>
+</ol>
+<p>编写完成代码后，启动provider和consumer模块，然后通过Postman工具调用接口，发现可以正常使用就完成了</p>
+<h2 id="Triple协议的Streaming通信实现"><a href="#Triple协议的Streaming通信实现" class="headerlink" title="Triple协议的Streaming通信实现"></a>Triple协议的Streaming通信实现</h2><p>Triple协议的Stream通信主要分为三种：服务端流、客户端流、双向流</p>
+<h3 id="应用场景"><a href="#应用场景" class="headerlink" title="应用场景"></a>应用场景</h3><ul>
+<li>接口需要发送大量数据，无法被放到一次请求中，需要分批次发送</li>
+<li>流式场景，数据需要按照发送顺序处理, 数据本身是没有确定边界的</li>
+<li>推送类场景，多个消息在同一个调用的上下文中被发送和处理</li>
+</ul>
+<h3 id="流的语义保证-优点"><a href="#流的语义保证-优点" class="headerlink" title="流的语义保证(优点)"></a>流的语义保证(优点)</h3><ul>
+<li>提供消息边界，可以方便的对消息进行单独处理</li>
+<li>严格有序，发送端的顺序和接收端的顺序是一致的</li>
+<li>全双工，发送不需要等待</li>
+<li>支持取消和超时</li>
+</ul>
+<h3 id="Streaming流通信实现"><a href="#Streaming流通信实现" class="headerlink" title="Streaming流通信实现"></a>Streaming流通信实现</h3><h4 id="服务端流-SERVER-STREAM-请求流程"><a href="#服务端流-SERVER-STREAM-请求流程" class="headerlink" title="服务端流(SERVER_STREAM)请求流程"></a>服务端流(SERVER_STREAM)请求流程</h4><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="./Dubbo%E7%AE%80%E5%8D%95%E5%AE%9E%E7%94%A8%E5%8F%8ATriple%E5%8D%8F%E8%AE%AE%E7%9A%84Streaming%E9%80%9A%E4%BF%A1%E5%AE%9E%E7%8E%B0/image-1661691742134.png"
+                      alt="服务端流(SERVER_STREAM)" width="400"
+                >
+
+<h4 id="服务端流-SERVER-STREAM-的Java实现"><a href="#服务端流-SERVER-STREAM-的Java实现" class="headerlink" title="服务端流(SERVER_STREAM)的Java实现"></a>服务端流(SERVER_STREAM)的Java实现</h4><ol>
+<li><p>在provider和consumer模块中添加相关依赖</p>
+ <div class="highlight-container" data-rel="Xml"><figure class="iseeu highlight xml"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>com.google.protobuf<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>protobuf-java<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br></pre></td></tr></table></figure></div>
+</li>
+<li><p>修改provider和consumer模块中的相关配置</p>
+ <div class="highlight-container" data-rel="Yaml"><figure class="iseeu highlight yaml"><table><tr><td class="code"><pre><span class="line"><span class="attr">dubbo:</span> <span class="comment">#此处仅截取需要变更的配置，其他配置默认为有原有的就行</span></span><br><span class="line">    <span class="attr">protocol:</span></span><br><span class="line">        <span class="attr">name:</span> <span class="string">tri</span> <span class="comment"># 修改dubbo的通信协议，当然triple协议同样支持之前的dubbo的简单使用</span></span><br></pre></td></tr></table></figure></div></li>
+<li><p>在common模块的UserService中声明相关api接口</p>
+ <div class="highlight-container" data-rel="Java"><figure class="iseeu highlight java"><table><tr><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 服务端流</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param</span> name</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param</span> response</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">void</span> <span class="title function_">sayHelloServerStream</span><span class="params">(String name, StreamObserver&lt;String&gt; response)</span></span><br><span class="line">    <span class="keyword">throws</span> InterruptedException;</span><br></pre></td></tr></table></figure></div></li>
+<li><p>在provider模块中实现相关功能</p>
+ <div class="highlight-container" data-rel="Java"><figure class="iseeu highlight java"><table><tr><td class="code"><pre><span class="line"><span class="comment">//StreamObserver是接收消息的观察者，</span></span><br><span class="line"><span class="comment">//在onNext方法调用后，consumer模块中的消费者会获取相关的数据，</span></span><br><span class="line"><span class="comment">//当onCompleted方法调用后，consumer模块进行最后的处理后，整个服务端流才会结束</span></span><br><span class="line"><span class="meta">@Override</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">sayHelloServerStream</span><span class="params">(String name, StreamObserver&lt;String&gt; response)</span></span><br><span class="line">    <span class="keyword">throws</span> InterruptedException &#123;</span><br><span class="line"></span><br><span class="line">    response.onNext(<span class="string">&quot;Hallo, &quot;</span> + name);</span><br><span class="line">    </span><br><span class="line">    <span class="comment">// 这里延迟10s，主要测试，provider模块接收数据会不会有10s的延时</span></span><br><span class="line">    Thread.sleep(<span class="number">10</span> * <span class="number">1000</span>);</span><br><span class="line"></span><br><span class="line">    response.onNext(<span class="string">&quot;Hallo, &quot;</span> + name + <span class="string">&quot;, 第二次&quot;</span>);</span><br><span class="line"></span><br><span class="line">    response.onCompleted();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
+</li>
+<li><p>在consumer模块编写请求方法</p>
+ <div class="highlight-container" data-rel="Java"><figure class="iseeu highlight java"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 测试服务端流</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param</span> name</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@return</span></span></span><br><span class="line"><span class="comment"> * <span class="doctag">@throws</span> InterruptedException</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="meta">@GetMapping(&quot;/sayHallo/&#123;name&#125;&quot;)</span></span><br><span class="line"><span class="keyword">public</span> List&lt;String&gt; <span class="title function_">sayHallo</span><span class="params">(<span class="meta">@PathVariable(&quot;name&quot;)</span> String name)</span> <span class="keyword">throws</span> InterruptedException &#123;</span><br><span class="line"></span><br><span class="line">    List&lt;String&gt; list = <span class="keyword">new</span> <span class="title class_">ArrayList</span>&lt;&gt;();</span><br><span class="line">    userService.sayHelloServerStream(name, <span class="keyword">new</span> <span class="title class_">StreamObserver</span>&lt;String&gt;() &#123;</span><br><span class="line">        </span><br><span class="line">        <span class="comment">// 每次provider模块调用一次onNext时，该方法会执行一次</span></span><br><span class="line">        <span class="meta">@Override</span></span><br><span class="line">        <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">onNext</span><span class="params">(String data)</span> &#123;</span><br><span class="line">            System.out.println(<span class="string">&quot;onNext:&quot;</span> + data);</span><br><span class="line">            list.add(data);</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="meta">@Override</span></span><br><span class="line">        <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">onError</span><span class="params">(Throwable throwable)</span> &#123;</span><br><span class="line">            System.out.println(<span class="string">&quot;报错了&quot;</span>);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="comment">// 当provider模块的onCompleted方法调用后，执行该方法</span></span><br><span class="line">        <span class="meta">@Override</span></span><br><span class="line">        <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">onCompleted</span><span class="params">()</span> &#123;</span><br><span class="line">            System.out.println(<span class="string">&quot;结束&quot;</span>);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;);</span><br><span class="line">    <span class="keyword">return</span> list;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div></li>
+</ol>
+<h4 id="客户端流-CLIENT-STREAM-请求流程"><a href="#客户端流-CLIENT-STREAM-请求流程" class="headerlink" title="客户端流(CLIENT_STREAM)请求流程"></a>客户端流(CLIENT_STREAM)请求流程</h4><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="./Dubbo%E7%AE%80%E5%8D%95%E5%AE%9E%E7%94%A8%E5%8F%8ATriple%E5%8D%8F%E8%AE%AE%E7%9A%84Streaming%E9%80%9A%E4%BF%A1%E5%AE%9E%E7%8E%B0/image-1661692170936.png"
+                      alt="客户端流(CLIENT_STREAM)" width="400"
+                >
+
+<h4 id="双向流-BIDIRECTIONAL-STREAM-请求流程"><a href="#双向流-BIDIRECTIONAL-STREAM-请求流程" class="headerlink" title="双向流(BIDIRECTIONAL_STREAM)请求流程"></a>双向流(BIDIRECTIONAL_STREAM)请求流程</h4><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="./Dubbo%E7%AE%80%E5%8D%95%E5%AE%9E%E7%94%A8%E5%8F%8ATriple%E5%8D%8F%E8%AE%AE%E7%9A%84Streaming%E9%80%9A%E4%BF%A1%E5%AE%9E%E7%8E%B0/image-1661692263642.png"
+                      alt="双向流(BIDIRECTIONAL_STREAM)" width="400"
+                >
+
+<h4 id="客户端流-CLIENT-STREAM-x2F-双向流-BIDIRECTIONAL-STREAM-的Java实现"><a href="#客户端流-CLIENT-STREAM-x2F-双向流-BIDIRECTIONAL-STREAM-的Java实现" class="headerlink" title="客户端流(CLIENT_STREAM)&#x2F;双向流(BIDIRECTIONAL_STREAM)的Java实现"></a>客户端流(CLIENT_STREAM)&#x2F;双向流(BIDIRECTIONAL_STREAM)的Java实现</h4><ol>
+<li><p>客户端流和双向流在Java中的实现方式是同一种</p>
+</li>
+<li><p>引用pom和修改配置与服务端流相同</p>
+</li>
+<li><p>在common模块中声明相关接口</p>
+ <div class="highlight-container" data-rel="Java"><figure class="iseeu highlight java"><table><tr><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 客户端流/双向流, 这里返回的StreamObserver类里的处理实在provider模块中实现，</span></span><br><span class="line"><span class="comment"> * 而参数StreamObserver则是在consumer模块中实现，虽然是consumer调用该方法</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param</span> response</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@return</span></span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line">StreamObserver&lt;String&gt; <span class="title function_">sayHelloStream</span><span class="params">(StreamObserver&lt;String&gt; response)</span>;</span><br></pre></td></tr></table></figure></div>
+</li>
+<li><p>在provider模块中实现相关方法</p>
+ <div class="highlight-container" data-rel="Java"><figure class="iseeu highlight java"><table><tr><td class="code"><pre><span class="line"><span class="meta">@Override</span></span><br><span class="line"><span class="keyword">public</span> StreamObserver&lt;String&gt; <span class="title function_">sayHelloStream</span><span class="params">(StreamObserver&lt;String&gt; response)</span> &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">new</span> <span class="title class_">StreamObserver</span>&lt;String&gt;() &#123;</span><br><span class="line">        <span class="meta">@Override</span></span><br><span class="line">        <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">onNext</span><span class="params">(String data)</span> &#123;</span><br><span class="line">            System.out.println(<span class="string">&quot;服务端请求参数:&quot;</span> + data);</span><br><span class="line">            response.onNext(<span class="string">&quot;Hello, &quot;</span> + data);</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="meta">@Override</span></span><br><span class="line">        <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">onError</span><span class="params">(Throwable throwable)</span> &#123;</span><br><span class="line"></span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="meta">@Override</span></span><br><span class="line">        <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">onCompleted</span><span class="params">()</span> &#123;</span><br><span class="line">            System.out.println(<span class="string">&quot;provider关闭&quot;</span>);</span><br><span class="line">            response.onCompleted();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div></li>
+<li><p>在consumer模块中实现方法的调用</p>
+<pre><code class="java">
+@PostMapping(&quot;/sayHallo&quot;)
+public List&lt;String&gt; sayHallo(@RequestBody List&lt;String&gt; names) &#123;
+    List&lt;String&gt; list = new ArrayList&lt;&gt;();
+    StreamObserver&lt;String&gt; request = userService.sayHelloStream(new StreamObserver&lt;String&gt;() &#123;
+        @Override
+        public void onNext(String data) &#123;
+            System.out.println(&quot;说了啥？&quot; + data);
+            list.add(data);
+        &#125;
+
+        @Override
+        public void onError(Throwable throwable) &#123;
+
+        &#125;
+
+        @Override
+        public void onCompleted() &#123;
+            System.out.println(&quot;结束了&quot;);
+        &#125;
+    &#125;);
+
+    // 上面定义了StreamObserver并调用了方法后，在下边通过onNext方法调用发送请求
+    names.forEach(item -&gt; &#123;
+        request.onNext(item);
+        try &#123;
+            Thread.sleep(10 * 1000);
+        &#125; catch (InterruptedException e) &#123;
+            throw new RuntimeException(e);
+        &#125;
+    &#125;);
+    request.onCompleted();
+
+    return list;
+&#125;
+</code></pre>
+</li>
+</ol>
+]]></content>
+      <categories>
+        <category>实践</category>
+        <category>分布式</category>
+      </categories>
+      <tags>
+        <tag>Dubbo</tag>
+        <tag>Triple</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Java中Lambda表达式不能修改外部变量问题</title>
+    <url>/waste-code/2022/08/20/Java%E4%B8%ADLambda%E8%A1%A8%E8%BE%BE%E5%BC%8F%E4%B8%8D%E8%83%BD%E4%BF%AE%E6%94%B9%E5%A4%96%E9%83%A8%E5%8F%98%E9%87%8F%E9%97%AE%E9%A2%98/</url>
+    <content><![CDATA[<h2 id="问题"><a href="#问题" class="headerlink" title="问题"></a>问题</h2><p>在代码Lambda表达式中访问了外部的局部变量，在IDEA中会报检查错误：<br><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="/waste-code/./Java%E4%B8%ADLambda%E8%A1%A8%E8%BE%BE%E5%BC%8F%E4%B8%8D%E8%83%BD%E4%BF%AE%E6%94%B9%E5%A4%96%E9%83%A8%E5%8F%98%E9%87%8F%E9%97%AE%E9%A2%98/image.png"
+                      alt="image"
+                ></p>
+<h2 id="已知前提"><a href="#已知前提" class="headerlink" title="已知前提"></a>已知前提</h2><ol>
+<li>num是方法中的局部变量</li>
+<li>forEach的Lambda表达式实际上是创建了一个匿名内部类</li>
+<li>该匿名内部类实现的是Consumer接口，实际上forEach中调用的是实现了Consumer接口的匿名内部类的accept方法</li>
+<li>在匿名内部类中对num进行修改</li>
+</ol>
+<h2 id="分析原因"><a href="#分析原因" class="headerlink" title="分析原因"></a>分析原因</h2><ol>
+<li>sum是方法的局部变量，是int基本类型。而在Java的线程模型中，栈帧内的局部变量是线程私有的。如果将sum的内存地址泄露到匿名内部类中，可能会引起并发访问的问题，并且栈帧中私有变量的内存地址泄露是不安全的。</li>
+<li>在Java方法调用中，关于基本类型的传递是值传递的因此在匿名内部类中的num与外部方法中的num实际上不是同一个内存地址指向的值，因此匿名内部类中num的值的改变不会导致外部局部变量的改变，为防止开发人员将两处的num认为是同一个内存地址指向的值，因此IDEA会报错。</li>
+</ol>
+<h2 id="解决方案"><a href="#解决方案" class="headerlink" title="解决方案"></a>解决方案</h2><p>如报错提示中一样定义成原子类便可，如下图<br><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="/waste-code/./Java%E4%B8%ADLambda%E8%A1%A8%E8%BE%BE%E5%BC%8F%E4%B8%8D%E8%83%BD%E4%BF%AE%E6%94%B9%E5%A4%96%E9%83%A8%E5%8F%98%E9%87%8F%E9%97%AE%E9%A2%98/image-1660980442426.png"
+                      alt="image-1660980442426"
+                ><br>这里AtomicInteger实际上的作用是引用类型，在方法调用时实际上传的是指向num的内存地址的值，因此在匿名内部类中指向的值与外部变量num执行的值是同一个，当然原子类也同时保证的并发访问的安全性。当然，这里的主要作用是将数据变为引用类型，方便传递后匿名内部类的值和匿名内部类外部的值指向的是同一块内存地址的值，如下图所示改变也可以<br><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="/waste-code/./Java%E4%B8%ADLambda%E8%A1%A8%E8%BE%BE%E5%BC%8F%E4%B8%8D%E8%83%BD%E4%BF%AE%E6%94%B9%E5%A4%96%E9%83%A8%E5%8F%98%E9%87%8F%E9%97%AE%E9%A2%98/image-1660980918060.png"
+                      alt="image-1660980918060"
+                ></p>
+<h2 id="注意"><a href="#注意" class="headerlink" title="注意"></a>注意</h2><p>既然变为引用变量就可以，使用Integer类型可不可以呢？<br><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="/waste-code/./Java%E4%B8%ADLambda%E8%A1%A8%E8%BE%BE%E5%BC%8F%E4%B8%8D%E8%83%BD%E4%BF%AE%E6%94%B9%E5%A4%96%E9%83%A8%E5%8F%98%E9%87%8F%E9%97%AE%E9%A2%98/image-1660981012175.png"
+                      alt="image-1660981012175"
+                ><br>如上图所示，IDEA同样会报错的，因为Integer类型在传到匿名内部类中会进行拆箱操作，因此相当于基本类型的值传递。</p>
+]]></content>
+      <categories>
+        <category>Java</category>
+      </categories>
+      <tags>
+        <tag>Java</tag>
       </tags>
   </entry>
   <entry>
@@ -120,6 +301,106 @@
         <tag>Java</tag>
         <tag>数据源切换</tag>
         <tag>Mybatis</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>微服务拆分</title>
+    <url>/waste-code/2023/05/21/%E5%BE%AE%E6%9C%8D%E5%8A%A1%E6%8B%86%E5%88%86/</url>
+    <content><![CDATA[<h1 id="微服务拆分"><a href="#微服务拆分" class="headerlink" title="微服务拆分"></a>微服务拆分</h1><h2 id="拆分时机"><a href="#拆分时机" class="headerlink" title="拆分时机"></a>拆分时机</h2><ul>
+<li>代码维护困难，进行代码合并时总会出现大量冲突</li>
+<li>模块耦合严重，小功能的修改需要累计到大版本才能上线且上线时需要协调多个团队</li>
+<li>横向扩展流程复杂，主要业务和次要业务耦合。在主要业务需要扩容时，次要业务也因为和主要业务耦合的原因进行了扩容</li>
+<li>业务规模扩大，业务复杂度变高时需要根据具体情况进行微服务的拆分</li>
+<li>团队规模扩大到一定程度时。</li>
+<li>研发效率大幅度下降</li>
+<li>技术储备，技术团队具有微服务的相关知识，才能能够进行微服务拆分</li>
+</ul>
+<h2 id="拆分原则"><a href="#拆分原则" class="headerlink" title="拆分原则"></a>拆分原则</h2><ul>
+<li>单一服务内部功能高内聚：每个服务仅完成自己职责，其他部分的功能交给其他服务来实现</li>
+<li>闭包原则：修改微服务时，不涉及其他微服务</li>
+<li>服务自治、接口隔离：尽量降低对其他服务的依赖性，通过标准的接口隔离，隐藏内部的实现细节，使服务可以独立的开发、测试、部署运行</li>
+<li>持续演进原则：逐步划分，持续演进，在服务需要拆分时就要拆分，避免服务规模过大一次性拆分所导致的服务数量爆炸性增长</li>
+<li>尽量避免影响日常的功能迭代：优先剥离比较独立的边界服务，优先拆分被依赖的服务</li>
+<li>服务接口的定义要具备可扩展性：防止服务接口的修改上线引起调用该接口的其他服务大量报错问题，可以考虑接口定义时的向老版本兼容，将接口多个参数封装成类(不会因为参数数量的更改引起服务报错)</li>
+<li>避免环形依赖或双向依赖：可能是服务的通用部分没有下沉出来，功能边界没有划分清楚</li>
+<li>阶段性合并：不断梳理领域边界，不断矫正才分的合理性，与<strong>持续演进原则</strong>相同</li>
+<li>自动化驱动：应首先构建自动化工具和环境，避免开发、测试、部署、运维上的重复性工作，减少微服务数量增多带来的开发和管理复杂度问题</li>
+</ul>
+<h2 id="拆分策略"><a href="#拆分策略" class="headerlink" title="拆分策略"></a>拆分策略</h2><h3 id="功能维度拆分策略"><a href="#功能维度拆分策略" class="headerlink" title="功能维度拆分策略"></a>功能维度拆分策略</h3><p>主要是基于业务复杂度拆分。当业务复杂度高时，可以基于领域驱动拆分服务；当业务复杂度低时，可以基于数据驱动拆分服务。</p>
+<ul>
+<li>基于数据驱动拆分服务：自下而上的架构设计方法，根据表之间的关系拆分服务。拆分步骤：需求分析、抽象数据结构、划分服务、确定调用关系和业务流程验证。</li>
+<li>基于领域驱动拆分服务：自上而下的架构设计方法，确定关键业务场景，确定边界上下文。拆分步骤：建立模型，业务分析，寻找聚合，确定调用关系，业务流程验证和持续优化</li>
+</ul>
+<h3 id="非功能维度拆分策略"><a href="#非功能维度拆分策略" class="headerlink" title="非功能维度拆分策略"></a>非功能维度拆分策略</h3><ul>
+<li>扩展性：将成熟的、通用的服务功能拆分出来作为公用的服务，将不成熟的具有特质化且需要根据业务需求不断变化的部分拆分出来满足个性化的扩展需要</li>
+<li>复用性：将公共服务拆分出来，供其他服务使用。例如组织架构服务，鉴权服务等</li>
+<li>高性能：将性能要求高且服务压力大的模块拆分出来，避免影响其他服务功能，也方便扩展。基于读写分离来拆分服务(一个服务负责数据的读取访问，一个服务负责数据的修改增加删除)，对于要求数据强一致性的功能，尽量放在一个服务中。</li>
+<li>安全性：把对信息安全要求高的服务拆分出来，进行区别部署</li>
+<li>异构性：将不同语言实现的服务拆分出来</li>
+</ul>
+<h2 id="拆分风险"><a href="#拆分风险" class="headerlink" title="拆分风险"></a>拆分风险</h2><ul>
+<li>技术储备：团队是否具有足够的经验，具有微服务的相关知识以及技术栈</li>
+<li>不断纠正：业务不断演进，服务拆分方案仅仅是现对于现状相对合适，因此服务的划分要随着变化而不断的演进和纠正</li>
+<li>考虑人员和资源与服务数量是否匹配</li>
+</ul>
+]]></content>
+      <categories>
+        <category>分布式</category>
+        <category>系统设计</category>
+      </categories>
+      <tags>
+        <tag>实践</tag>
+        <tag>微服务</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>线上CPU飙高解决方案</title>
+    <url>/waste-code/2022/08/17/%E7%BA%BF%E4%B8%8ACPU%E9%A3%99%E9%AB%98%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88/</url>
+    <content><![CDATA[<h2 id="相关命令"><a href="#相关命令" class="headerlink" title="相关命令"></a>相关命令</h2><ol>
+<li>查看cpu占用最大的进程：<code>top -c</code></li>
+<li>查看进程下线程的cpu: <code>top -Hp &#123;进程号(PID)&#125;</code></li>
+<li>获取线程号: <code>printf &quot;%x\n&quot; &#123;线程的PID&#125;</code><blockquote>
+<p>如果输出db1, 则线程号为 0xdb1</p>
+</blockquote>
+</li>
+<li>获取线程的状态和信息: <code>jstack &#123;进程号&#125; | grep &#123;线程号(例如0xdb1)&#125;</code></li>
+<li>查看线程异常信息: <code>jstack -l &#123;线程PID&#125;</code>, 也可以保存到文件中查看: <code>jstack -l &#123;线程PID&#125; &gt; &#123;文件名&#125;.stack</code></li>
+<li>获取进程持续时间的GC情况: <code>jstat -gcutil &#123;进程号PID&#125; &#123;统计间隔(毫秒)&#125; &#123;统计次数&#125;</code><blockquote>
+<p><code>jmap -heap &#123;进程PID&#125;</code> 查看进程堆内是否要溢出了</p>
+</blockquote>
+</li>
+<li>导出进程的dump文件<blockquote>
+<p><code>jmap -dump:format=b,file=&#123;文件名&#125;.dmp &#123;进程PID&#125;</code> 体积和堆一样大，速度慢<br><code>jmap -dump:live,format=b,file=&#123;文件名&#125;.hprof &#123;进程PID&#125;</code>，堆内存活的dump文件，体积小于堆，hprof可以给MAT分析用（推荐）</p>
+</blockquote>
+</li>
+<li>Linux查看Java进程的启动参数(主要用来查看堆空间分配，和GC方案的采用)<ul>
+<li><code>ps eww &#123;进程PID&#125;</code></li>
+<li><code>jcmd &#123;进程PID&#125; VM.flags</code></li>
+<li><code>jinfo -flags &#123;进程PID&#125;</code></li>
+<li><code>jmap -heap &#123;进程PID&#125;</code></li>
+</ul>
+</li>
+</ol>
+<h2 id="原因"><a href="#原因" class="headerlink" title="原因"></a>原因</h2><ol>
+<li>内存消耗过大, 导致Full GC过多</li>
+<li>代码中有大量消耗CPU的操作，导致CPU过高，系统运行缓慢</li>
+<li>由于锁使用不当，导致死锁</li>
+<li>随机出现大量线程访问接口，导致缓慢</li>
+<li>某个线程由于某种原因一直在WAITING状态，导致此时该功能不可用</li>
+</ol>
+<h2 id="方向"><a href="#方向" class="headerlink" title="方向"></a>方向</h2><ol>
+<li>查看监控平台，看http请求和feign请求是否异常</li>
+<li>查看满接口平台，查看时间较长的请求接口</li>
+<li>查看数据库访问，找到查询数据量较大的sql或慢sql</li>
+<li>查看JVM监控，查看堆内存的异常或GC异常情况</li>
+<li>查看线程是否有异常情况</li>
+</ol>
+]]></content>
+      <categories>
+        <category>线上问题</category>
+      </categories>
+      <tags>
+        <tag>线上问题</tag>
       </tags>
   </entry>
 </search>
