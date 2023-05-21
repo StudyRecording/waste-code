@@ -3,7 +3,13 @@
   <entry>
     <title>Docker常用命令</title>
     <url>/waste-code/2022/08/12/Docker%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/</url>
-    <content><![CDATA[<h1 id="Docker常用使用命令"><a href="#Docker常用使用命令" class="headerlink" title="Docker常用使用命令"></a>Docker常用使用命令</h1><h2 id="基本命令"><a href="#基本命令" class="headerlink" title="基本命令"></a>基本命令</h2><ul>
+    <content><![CDATA[<h1 id="Docker常用使用命令"><a href="#Docker常用使用命令" class="headerlink" title="Docker常用使用命令"></a>Docker常用使用命令</h1><p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="/waste-code/avatar.jpg"
+                      alt="头像"
+                ></p>
+<h2 id="基本命令"><a href="#基本命令" class="headerlink" title="基本命令"></a>基本命令</h2><ul>
 <li><code>docker version</code> docker版本</li>
 <li><code>docker info</code> docker信息</li>
 <li><code>docker --help</code> docker命令帮助</li>
@@ -183,12 +189,12 @@ public List&lt;String&gt; sayHallo(@RequestBody List&lt;String&gt; names) &#123;
 </ol>
 ]]></content>
       <categories>
-        <category>实践</category>
         <category>分布式</category>
       </categories>
       <tags>
         <tag>Dubbo</tag>
         <tag>Triple</tag>
+        <tag>实践</tag>
       </tags>
   </entry>
   <entry>
@@ -291,16 +297,13 @@ public List&lt;String&gt; sayHallo(@RequestBody List&lt;String&gt; names) &#123;
 <p><strong>项目示例:</strong> <a class="link"   href="https://github.com/StudyRecording/dynamicDataSource/tree/main/dynamicDataSourceMybatisPlus" >https://github.com/StudyRecording/dynamicDataSource/tree/main/dynamicDataSourceMybatisPlus <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a></p>
 ]]></content>
       <categories>
-        <category>Java</category>
-        <category>数据库</category>
-        <category>实践</category>
         <category>分布式</category>
-        <category>系统设计</category>
       </categories>
       <tags>
         <tag>Java</tag>
-        <tag>数据源切换</tag>
+        <tag>数据库</tag>
         <tag>Mybatis</tag>
+        <tag>系统设计</tag>
       </tags>
   </entry>
   <entry>
@@ -346,10 +349,10 @@ public List&lt;String&gt; sayHallo(@RequestBody List&lt;String&gt; names) &#123;
 ]]></content>
       <categories>
         <category>分布式</category>
-        <category>系统设计</category>
       </categories>
       <tags>
         <tag>实践</tag>
+        <tag>系统设计</tag>
         <tag>微服务</tag>
       </tags>
   </entry>
