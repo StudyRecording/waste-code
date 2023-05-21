@@ -3,8 +3,8 @@ title: Dubbo简单实用及Triple协议的Streaming通信实现
 tags:
   - Dubbo
   - Triple
-categories:
   - 实践
+categories:
   - 分布式
 excerpt: Dubbo的简单使用，Triple的协议和实现
 thumbnail: https://t.mwm.moe/ycy
