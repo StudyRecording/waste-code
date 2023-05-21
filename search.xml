@@ -236,6 +236,28 @@ public List&lt;String&gt; sayHallo(@RequestBody List&lt;String&gt; names) &#123;
       </tags>
   </entry>
   <entry>
+    <title>Linux查询日志</title>
+    <url>/waste-code/2022/03/02/Linux%E6%9F%A5%E8%AF%A2%E6%97%A5%E5%BF%97/</url>
+    <content><![CDATA[<h1 id="Linux基础命令"><a href="#Linux基础命令" class="headerlink" title="Linux基础命令"></a>Linux基础命令</h1><h2 id="日志操作"><a href="#日志操作" class="headerlink" title="日志操作"></a>日志操作</h2><ul>
+<li>查看日志文件倒数1000行:  <code>tail -fn 1000 &#123;日志文件名称&#125;</code></li>
+<li>服务器日志文件下载: <code>scp &#123;用户名&#125;@&#123;ip地址&#125;:&#123;服务器文件路径&#125; &#123;本地路径&#125;</code></li>
+<li>日志关键字搜索: <ul>
+<li><code>tail -&#123;最近的行数&#125;f &#123;文件名&#125; | grep &quot;&#123;查询的关键字&#125;&quot; --color=auto</code><br>eg：<code>tail -1000f log.log | grep &quot;请求参数&quot; --color=auto</code>  查询文件log.log的最近1000行中匹配“请求参数”关键字，并将关键字按照红色显示</li>
+<li><code>tail -&#123;最近行数&#125;f &#123;文件名&#125; | grep &quot;&#123;查询的关键字&#125; -A &#123;匹配行之前的行数&#125; -B &#123;匹配行之后的行数&#125; --color=auto&quot;</code><br>eg: <code>tail -1000f log.log | grep &quot;请求参数&quot; -A 10 -B 10 --color=auto</code> 查询log.log文件最近1000行中能够匹配“请求参数”关键字的行并显示匹配行前10行和后10行，匹配的关键字以红色显示</li>
+<li><code>tail -fn &#123;最近行数&#125; &#123;文件名&#125; | grep &quot;&#123;查询的关键字&#125; -A &#123;匹配行之前的行数&#125; -B &#123;匹配行之后的行数&#125; --color=auto&quot;</code><br>eg: <code>tail -fn 1000 log.log | grep &quot;请求参数&quot; -A 10 -B 10 --color=auto</code>  <strong>实时</strong>查询log.log文件最近1000行中能够匹配“请求参数”关键字的行并显示匹配行的前10行和后10行，匹配的关键字以红色显示</li>
+</ul>
+</li>
+</ul>
+]]></content>
+      <categories>
+        <category>运维与部署</category>
+      </categories>
+      <tags>
+        <tag>Linux</tag>
+        <tag>tail命令</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Hello World</title>
     <url>/waste-code/2023/05/20/hello-world/</url>
     <content><![CDATA[<p>Welcome to <a class="link"   href="https://hexo.io/" >Hexo <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a>! This is your very first post. Check <a class="link"   href="https://hexo.io/docs/" >documentation <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a> for more info. If you get any problems when using Hexo, you can find the answer in <a class="link"   href="https://hexo.io/docs/troubleshooting.html" >troubleshooting <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a> or you can ask me on <a class="link"   href="https://github.com/hexojs/hexo/issues" >GitHub <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a>.</p>
