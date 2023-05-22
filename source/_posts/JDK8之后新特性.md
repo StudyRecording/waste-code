@@ -6,13 +6,11 @@ tags:
 categories:
   - Java
 excerpt: 查询其他网上的文章, 记录有误, 因此记录一下关于Java8之后新的语法
-thumbnail: https://t.mwm.moe/ycy
+thumbnail: https://pic1.zhimg.com/80/v2-6d7c19e989d7eea2a747e1f8723808a4_1440w.webp
 cover: https://t.mwm.moe/pc
 sticky: 1
 date: 2023-05-22 21:19:52
 ---
-
-
 
 ## 静态工厂方法
 
@@ -34,12 +32,7 @@ static <E> Set<E> of() {
 static <E> Set<E> of(E e1) {
    return new ImmutableCollections.Set12<>(e1);
 }
-
 ```
-
-
-
-
 
 ## 新的Stream Api
 
@@ -53,11 +46,7 @@ List.of(2, 1, 3, 6, 9, 5, 2, 4, 1, 0, 9).stream()
                 .takeWhile(item -> item < 3)
                 .forEach(System.out::println);
 // 最终输出是2和1
-
-
 ```
-
-
 
 ```java
 // 如果第一元素不符合条件则返回全部元素
@@ -72,8 +61,6 @@ List.of(2, 1, 3, 6, 9, 5, 2, 4, 1, 0, 9).stream()
 // 最终输出为3、6、9、5、2、4、1、0、9
 ```
 
-
-
 ```java
 // 根据表达式生成符合条件的值
 static Stream iterate(T seed, Predicate hasNext, UnaryOperator next);
@@ -83,8 +70,6 @@ Stream.iterate(1, item -> item < 5, item -> item * 2)
                 .forEach(System.out::println);
 // 最终输出为1、2、4
 ```
-
-
 
 ```java
 // 使用空值创建空的Stream,避免空指针
@@ -99,8 +84,6 @@ Stream.of(list)
                 .forEach(System.out::println);
 // 输出字符串"null"
 ```
-
-
 
 ## 接口中定义方法
 
@@ -118,8 +101,6 @@ public interface TestInterface {
 }
 ```
 
-
-
 ## 类型推断
 
 ```java
@@ -130,11 +111,7 @@ for (var integer : list) {
 // 输出：1、2、3、4、5
 ```
 
-
-
 ## Http请求使用
-
-
 
 ### 同步请求
 
@@ -148,8 +125,6 @@ HttpResponse<String> send = client.send(request, HttpResponse.BodyHandlers.ofStr
 System.out.println(send.body());
 ```
 
-
-
 ### 异步请求并保存到文件
 
 ```java
@@ -161,8 +136,6 @@ HttpClient.newHttpClient()
         .sendAsync(request, HttpResponse.BodyHandlers.ofFile(Paths.get("/Users/hpc/jdkTest.txt")))
         .join();
 ```
-
-
 
 ## `instanceof` 语法改进
 
@@ -180,8 +153,6 @@ HttpClient.newHttpClient()
     }
 ```
 
-
-
 ## ## Switch和Yield
 
 yield在switch中可以当做return的意思，只不过yield的作用于仅限于switch中
@@ -190,9 +161,6 @@ yield在switch中可以当做return的意思，只不过yield的作用于仅限�
     public static void main(String[] args) {
         System.out.println(get(8));
         // 输出"xxxxxxxxx"
-
-        System.out.println(getByFormat(1L));
-        // 输出"long 1"
 
         System.out.println(getByYield(4));
         // 输出"xxxx"
@@ -214,7 +182,7 @@ yield在switch中可以当做return的意思，只不过yield的作用于仅限�
             default -> "";
         };
     }
-    
+
     private static String getByYield(Integer num) {
         return switch (num) {
             case 1: yield "x";
@@ -231,13 +199,46 @@ yield在switch中可以当做return的意思，只不过yield的作用于仅限�
                 yield sb.toString();
             default: yield  "";
         };
-    }
+    }    
+```
 
-    private static String getByFormat(Object o) {
-        return switch (o) {
-            case Integer i -> String.format("int %d", i);
-            case Long l -> String.format("long %d", l);
-            default -> o.toString();
-        };
-    }
+
+
+## 文本块
+
+```java
+        // 原格式输出
+        String json = """
+                      {
+                        "name": "test",
+                        "age": 11
+                      }
+                      """;
+        
+        // 一行输出
+        String str = """
+                xinis \
+                ksldj \
+                sjd 
+                """;
+        // 换行输出
+        String str = """
+                xinis \s
+                ksldj \s
+                sjd 
+                """;
+```
+
+
+
+## record类型
+
+```java
+public record Person(String name) {
+}
+
+
+// 使用
+Person person = new Person("xxl");
+System.out.println(person.name());
 ```
