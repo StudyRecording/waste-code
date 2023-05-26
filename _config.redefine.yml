@@ -372,6 +372,10 @@ plugins:
         artist: Various Artists # audio artist
         url:  https://studyrecording.github.io/waste-code/music/See_The_Fire_In_Your_Eyes.mp3 # audio url
         cover: https://p2.music.126.net/_TZv2QQGvisSuWXPSgUNiw==/109951163807703601.jpg?param=90y90 # audio cover url
+      - name: 知我
+        artist: 哦漏
+        url: https://raw.githubusercontent.com/StudyRecording/waste-code-image/main/img/%E7%9F%A5%E6%88%91.mp3
+        cover: https://raw.githubusercontent.com/StudyRecording/waste-code-image/main/img/109951164415301539.jpg
       # - name: # audio name
       #   artist: # audio artist
       #   url: # audio url
