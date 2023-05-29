@@ -173,10 +173,10 @@ navbar:
       path: /archives 
       icon: fa-regular fa-archive # can be empty
     Categories:
-      icon: fa-regular fa-house
+      icon: fa-regular fa-grid
       path: /categories/
     Tags:
-      icon: fa-regular fa-house
+      icon: fa-regular fa-tags
       path: /tags/
     知识点:
       icon: fa-regular fa-book
