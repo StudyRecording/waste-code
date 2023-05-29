@@ -169,15 +169,18 @@ navbar:
     Home: 
       path: / 
       icon: fa-regular fa-house # can be empty
-    Archives: 
-      path: /archives 
-      icon: fa-regular fa-archive # can be empty
-    Categories:
-      icon: fa-regular fa-house
-      path: /categories/
-    Tags:
-      icon: fa-regular fa-house
-      path: /tags/
+    文章:
+      icon: fa-regular fa-paper-plane
+      submenus:
+        Archives: 
+          path: /archives 
+          icon: fa-regular fa-archive # can be empty
+        Categories:
+          icon: fa-regular fa-house
+          path: /categories/
+        Tags:
+          icon: fa-regular fa-house
+          path: /tags/
     日志:
       icon: fa-regular fa-messages
       path: /essays/
