@@ -115,7 +115,7 @@ home_banner:
     typing_speed: 100 # Typing speed (ms)
     backing_speed: 100 # Backing speed (ms)
     starting_delay: 500 # Start delay (ms)
-    backing_delay: 3000 # Backing delay (ms)
+    backing_delay: 800 # Backing delay (ms)
     loop: true # Whether to loop
     smart_backspace: true # Whether to smart backspace
   # Color of home banner text
@@ -184,6 +184,9 @@ navbar:
     图片:
       icon: fa-regular fa-image
       path: /masonry/
+    知识点:
+      icon: fa-regular fa-book
+      path: /knowledge-point/
     # Status: 
     #   path: https://status.evanluo.top/
     #   icon: fa-regular fa-chart-bar
