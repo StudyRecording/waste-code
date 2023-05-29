@@ -181,7 +181,7 @@ navbar:
     知识点:
       icon: fa-regular fa-book
       path: /knowledge-point/
-    日常:
+    心情:
       icon: fa-regular fa-heart-pulse
       submenus:
         日志: /essays/
