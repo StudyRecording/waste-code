@@ -169,27 +169,23 @@ navbar:
     Home: 
       path: / 
       icon: fa-regular fa-house # can be empty
-    文章:
-      icon: fa-regular fa-paper-plane
-      submenus:
-        Archives: 
-          path: /archives 
-          icon: fa-regular fa-archive # can be empty
-        Categories:
-          icon: fa-regular fa-house
-          path: /categories/
-        Tags:
-          icon: fa-regular fa-house
-          path: /tags/
-    日志:
-      icon: fa-regular fa-messages
-      path: /essays/
-    图片:
-      icon: fa-regular fa-image
-      path: /masonry/
+    Archives: 
+      path: /archives 
+      icon: fa-regular fa-archive # can be empty
+    Categories:
+      icon: fa-regular fa-house
+      path: /categories/
+    Tags:
+      icon: fa-regular fa-house
+      path: /tags/
     知识点:
       icon: fa-regular fa-book
       path: /knowledge-point/
+    日常:
+      icon: fa-regular fa-heart-pulse
+      submenus:
+        日志: /essays/
+        图片: /masonry/
     # Status: 
     #   path: https://status.evanluo.top/
     #   icon: fa-regular fa-chart-bar
