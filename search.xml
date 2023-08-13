@@ -511,13 +511,13 @@ public List&lt;String&gt; sayHallo(@RequestBody List&lt;String&gt; names) &#123;
 <h3 id="两阶段提交流程图"><a href="#两阶段提交流程图" class="headerlink" title="两阶段提交流程图"></a>两阶段提交流程图</h3><p><img  
                      lazyload
                      src="/images/loading.svg"
-                     data-src="/waste-code/%5Bhttps:/raw.githubusercontent.com/StudyRecording/waste-code-image/main/img/20230813153035.png%5D(https:/raw.githubusercontent.com/StudyRecording/waste-code-image/main/img/20230813153035.png)"
+                     data-src="https://raw.githubusercontent.com/StudyRecording/waste-code-image/main/img/20230813153035.png"
                       alt="两阶段提交"
                 ></p>
 <h3 id="数据库恢复数据流程"><a href="#数据库恢复数据流程" class="headerlink" title="数据库恢复数据流程"></a>数据库恢复数据流程</h3><p><img  
                      lazyload
                      src="/images/loading.svg"
-                     data-src="/waste-code/%5Bhttps:/raw.githubusercontent.com/StudyRecording/waste-code-image/main/img/20230813153520.png%5D(https:/raw.githubusercontent.com/StudyRecording/waste-code-image/main/img/20230813153520.png)"
+                     data-src="https://raw.githubusercontent.com/StudyRecording/waste-code-image/main/img/20230813153520.png"
                       alt="数据恢复"
                 ></p>
 <h2 id="重做日志-Redo-Log"><a href="#重做日志-Redo-Log" class="headerlink" title="重做日志(Redo Log)"></a>重做日志(Redo Log)</h2><blockquote>
