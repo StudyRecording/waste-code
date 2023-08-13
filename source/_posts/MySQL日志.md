@@ -35,11 +35,11 @@ MySQL的日志种类
 
 ### 两阶段提交流程图
 
-![两阶段提交]([https://raw.githubusercontent.com/StudyRecording/waste-code-image/main/img/20230813153035.png](https://raw.githubusercontent.com/StudyRecording/waste-code-image/main/img/20230813153035.png))
+![两阶段提交](https://raw.githubusercontent.com/StudyRecording/waste-code-image/main/img/20230813153035.png)
 
 ### 数据库恢复数据流程
 
-![数据恢复]([https://raw.githubusercontent.com/StudyRecording/waste-code-image/main/img/20230813153520.png](https://raw.githubusercontent.com/StudyRecording/waste-code-image/main/img/20230813153520.png))
+![数据恢复](https://raw.githubusercontent.com/StudyRecording/waste-code-image/main/img/20230813153520.png)
 
 重做日志(Redo Log)
 --------------
