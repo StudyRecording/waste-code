@@ -118,3 +118,7 @@ MySQL的日志种类
 *   MySQL停止或重启
 *   使用`flush logs`命令
 *   binlog大小超出`max_binlog_size`
+
+数据库如何保证ACID的
+-------------
+undo log保证事务的原子性, redo log保证事务的持久性, MVCC可保证事务的隔离性, 原子性和持久性以及隔离性可保证事务的一致性. bin log以及bin log和redo log的两段式提交能保证集群的数据一致性
