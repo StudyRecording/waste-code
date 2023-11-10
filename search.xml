@@ -132,7 +132,7 @@
                       alt="双向流(BIDIRECTIONAL_STREAM)" width="400"
                 >
 
-<h4 id="客户端流-CLIENT-STREAM-x2F-双向流-BIDIRECTIONAL-STREAM-的Java实现"><a href="#客户端流-CLIENT-STREAM-x2F-双向流-BIDIRECTIONAL-STREAM-的Java实现" class="headerlink" title="客户端流(CLIENT_STREAM)&#x2F;双向流(BIDIRECTIONAL_STREAM)的Java实现"></a>客户端流(CLIENT_STREAM)&#x2F;双向流(BIDIRECTIONAL_STREAM)的Java实现</h4><ol>
+<h4 id="客户端流-CLIENT-STREAM-双向流-BIDIRECTIONAL-STREAM-的Java实现"><a href="#客户端流-CLIENT-STREAM-双向流-BIDIRECTIONAL-STREAM-的Java实现" class="headerlink" title="客户端流(CLIENT_STREAM)&#x2F;双向流(BIDIRECTIONAL_STREAM)的Java实现"></a>客户端流(CLIENT_STREAM)&#x2F;双向流(BIDIRECTIONAL_STREAM)的Java实现</h4><ol>
 <li><p>客户端流和双向流在Java中的实现方式是同一种</p>
 </li>
 <li><p>引用pom和修改配置与服务端流相同</p>
