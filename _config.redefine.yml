@@ -224,15 +224,15 @@ home:
     links:
       # Archives: 
       归档:
-        path: /waste-code/archives/
+        path: /archives/
         icon: fa-regular fa-archive # can be empty
       # Tags: 
       标签: 
-        path: /waste-code/tags/
+        path: /tags/
         icon: fa-regular fa-tags # can be empty
       # Categories: 
       分类: 
-        path: /waste-code/categories/
+        path: /categories/
         icon: fa-regular fa-folder # can be empty
       # ...... # you can add more
   # Article date format
