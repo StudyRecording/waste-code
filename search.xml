@@ -192,80 +192,6 @@ public List&lt;String&gt; sayHallo(@RequestBody List&lt;String&gt; names) &#123;
       </tags>
   </entry>
   <entry>
-    <title>JAVA面试点</title>
-    <url>/waste-code/2023/09/19/JAVA%E9%9D%A2%E8%AF%95%E7%82%B9/</url>
-    <content><![CDATA[<h2 id="Java"><a href="#Java" class="headerlink" title="Java"></a>Java</h2><ul>
-<li>HashMap的get优化</li>
-</ul>
-<h2 id="并发"><a href="#并发" class="headerlink" title="并发"></a>并发</h2><ul>
-<li>线程池</li>
-<li>线程状态</li>
-</ul>
-<h2 id="JVM"><a href="#JVM" class="headerlink" title="JVM"></a>JVM</h2><ul>
-<li>内存模型</li>
-<li>垃圾收集算法</li>
-<li>对象实例化过程</li>
-<li>类加载过程</li>
-<li>垃圾搜集器</li>
-</ul>
-<h2 id="MySQL"><a href="#MySQL" class="headerlink" title="MySQL"></a>MySQL</h2><ul>
-<li>binlog、redo log、undo log日志</li>
-<li>数据结构</li>
-<li>索引种类</li>
-<li>ip在数据库中如何存储</li>
-<li>一条sql语句是如何执行的</li>
-<li>MySQL主从复制流程</li>
-</ul>
-<h2 id="Spring、Spring-boot、mybatis"><a href="#Spring、Spring-boot、mybatis" class="headerlink" title="Spring、Spring boot、mybatis"></a>Spring、Spring boot、mybatis</h2><ul>
-<li>spring的bean生命周期</li>
-<li>spring AOP的原理</li>
-<li>spring 事务的实现原理</li>
-<li>spring MVC的请求流程</li>
-<li>spring boot自动配置原理</li>
-<li>循环依赖</li>
-<li>spring boot优雅停机</li>
-<li>bean factory和factory bean区别</li>
-</ul>
-<h2 id="Nacos"><a href="#Nacos" class="headerlink" title="Nacos"></a>Nacos</h2><ul>
-<li>服务注册与发现原理</li>
-<li>配置管理原理</li>
-<li>服务注册表的三层Map结构</li>
-</ul>
-<h2 id="Sentinel"><a href="#Sentinel" class="headerlink" title="Sentinel"></a>Sentinel</h2><ul>
-<li>sentinel原理</li>
-<li>sentinel限流的维度</li>
-<li>熔断的三种策略</li>
-<li>限流的算法</li>
-</ul>
-<h2 id="Seata"><a href="#Seata" class="headerlink" title="Seata"></a>Seata</h2><ul>
-<li>分布式事务的4中类型TA、TCC、SAGA、XA</li>
-</ul>
-<h2 id="Redis"><a href="#Redis" class="headerlink" title="Redis"></a>Redis</h2><ul>
-<li>redis的集群部署方式</li>
-<li>redis的持久化方式</li>
-<li>redis缓存雪崩、缓存穿透、缓存击穿</li>
-<li>redis的失效策略</li>
-</ul>
-<h2 id="Dubbo"><a href="#Dubbo" class="headerlink" title="Dubbo"></a>Dubbo</h2><h2 id="Zookeeper"><a href="#Zookeeper" class="headerlink" title="Zookeeper"></a>Zookeeper</h2><h2 id="操作系统"><a href="#操作系统" class="headerlink" title="操作系统"></a>操作系统</h2><p>零拷贝</p>
-<h2 id="KafKa"><a href="#KafKa" class="headerlink" title="KafKa"></a>KafKa</h2><ul>
-<li>消息模型</li>
-<li>解决消息丢失、重复消费、消息堆积的问题</li>
-</ul>
-<h2 id="RocketMQ"><a href="#RocketMQ" class="headerlink" title="RocketMQ"></a>RocketMQ</h2><ul>
-<li>消息模型</li>
-<li>事务消息</li>
-<li>消息丢失、重复消费、消息堆积的问题</li>
-</ul>
-]]></content>
-      <categories>
-        <category>Java</category>
-      </categories>
-      <tags>
-        <tag>Java</tag>
-        <tag>面试</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>Excel导出模版设置省市区级联下拉列表</title>
     <url>/waste-code/2023/06/15/Excel%E5%AF%BC%E5%87%BA%E6%A8%A1%E7%89%88%E8%AE%BE%E7%BD%AE%E7%9C%81%E5%B8%82%E5%8C%BA%E7%BA%A7%E8%81%94%E4%B8%8B%E6%8B%89%E5%88%97%E8%A1%A8-md/</url>
     <content><![CDATA[<h1 id="Excel导出模版设置省市区级联下拉列表"><a href="#Excel导出模版设置省市区级联下拉列表" class="headerlink" title="Excel导出模版设置省市区级联下拉列表"></a>Excel导出模版设置省市区级联下拉列表</h1><blockquote>
@@ -409,6 +335,80 @@ public List&lt;String&gt; sayHallo(@RequestBody List&lt;String&gt; names) &#123;
       <tags>
         <tag>excel</tag>
         <tag>级联下拉列表</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>JAVA面试点</title>
+    <url>/waste-code/2023/09/19/JAVA%E9%9D%A2%E8%AF%95%E7%82%B9/</url>
+    <content><![CDATA[<h2 id="Java"><a href="#Java" class="headerlink" title="Java"></a>Java</h2><ul>
+<li>HashMap的get优化</li>
+</ul>
+<h2 id="并发"><a href="#并发" class="headerlink" title="并发"></a>并发</h2><ul>
+<li>线程池</li>
+<li>线程状态</li>
+</ul>
+<h2 id="JVM"><a href="#JVM" class="headerlink" title="JVM"></a>JVM</h2><ul>
+<li>内存模型</li>
+<li>垃圾收集算法</li>
+<li>对象实例化过程</li>
+<li>类加载过程</li>
+<li>垃圾搜集器</li>
+</ul>
+<h2 id="MySQL"><a href="#MySQL" class="headerlink" title="MySQL"></a>MySQL</h2><ul>
+<li>binlog、redo log、undo log日志</li>
+<li>数据结构</li>
+<li>索引种类</li>
+<li>ip在数据库中如何存储</li>
+<li>一条sql语句是如何执行的</li>
+<li>MySQL主从复制流程</li>
+</ul>
+<h2 id="Spring、Spring-boot、mybatis"><a href="#Spring、Spring-boot、mybatis" class="headerlink" title="Spring、Spring boot、mybatis"></a>Spring、Spring boot、mybatis</h2><ul>
+<li>spring的bean生命周期</li>
+<li>spring AOP的原理</li>
+<li>spring 事务的实现原理</li>
+<li>spring MVC的请求流程</li>
+<li>spring boot自动配置原理</li>
+<li>循环依赖</li>
+<li>spring boot优雅停机</li>
+<li>bean factory和factory bean区别</li>
+</ul>
+<h2 id="Nacos"><a href="#Nacos" class="headerlink" title="Nacos"></a>Nacos</h2><ul>
+<li>服务注册与发现原理</li>
+<li>配置管理原理</li>
+<li>服务注册表的三层Map结构</li>
+</ul>
+<h2 id="Sentinel"><a href="#Sentinel" class="headerlink" title="Sentinel"></a>Sentinel</h2><ul>
+<li>sentinel原理</li>
+<li>sentinel限流的维度</li>
+<li>熔断的三种策略</li>
+<li>限流的算法</li>
+</ul>
+<h2 id="Seata"><a href="#Seata" class="headerlink" title="Seata"></a>Seata</h2><ul>
+<li>分布式事务的4中类型TA、TCC、SAGA、XA</li>
+</ul>
+<h2 id="Redis"><a href="#Redis" class="headerlink" title="Redis"></a>Redis</h2><ul>
+<li>redis的集群部署方式</li>
+<li>redis的持久化方式</li>
+<li>redis缓存雪崩、缓存穿透、缓存击穿</li>
+<li>redis的失效策略</li>
+</ul>
+<h2 id="Dubbo"><a href="#Dubbo" class="headerlink" title="Dubbo"></a>Dubbo</h2><h2 id="Zookeeper"><a href="#Zookeeper" class="headerlink" title="Zookeeper"></a>Zookeeper</h2><h2 id="操作系统"><a href="#操作系统" class="headerlink" title="操作系统"></a>操作系统</h2><p>零拷贝</p>
+<h2 id="KafKa"><a href="#KafKa" class="headerlink" title="KafKa"></a>KafKa</h2><ul>
+<li>消息模型</li>
+<li>解决消息丢失、重复消费、消息堆积的问题</li>
+</ul>
+<h2 id="RocketMQ"><a href="#RocketMQ" class="headerlink" title="RocketMQ"></a>RocketMQ</h2><ul>
+<li>消息模型</li>
+<li>事务消息</li>
+<li>消息丢失、重复消费、消息堆积的问题</li>
+</ul>
+]]></content>
+      <categories>
+        <category>Java</category>
+      </categories>
+      <tags>
+        <tag>Java</tag>
+        <tag>面试</tag>
       </tags>
   </entry>
   <entry>
