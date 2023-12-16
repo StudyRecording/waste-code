@@ -5,7 +5,7 @@ tags:
 categories:
   - 运维与部署
 excerpt: docker的简单使用, 包括基本的启动停止、 查看日志等
-thumbnail: https://cdn.cdnjson.com/tvax3.sinaimg.cn//large/0072Vf1pgy1foxkixrz1uj31hc0u0dy2.jpg
+thumbnail: https://pan.mwm.moe/f/z4ocY/21.WEBP
 cover: https://t.mwm.moe/pc
 sticky: 1
 date: 2022-08-13 05:06:20

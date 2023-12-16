@@ -6,7 +6,7 @@ tags:
 categories:
   - 运维与部署
 excerpt: 这是文章摘要
-thumbnail: https://cdn.cdnjson.com/tvax3.sinaimg.cn//large/0072Vf1pgy1fodqiop9awj31kw0vynpd.jpg
+thumbnail: https://pan.mwm.moe/f/pvEUk/36.WEBP
 cover: https://t.mwm.moe/pc
 sticky: 1
 date: 2022-03-02 13:09:01
