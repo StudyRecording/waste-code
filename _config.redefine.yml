@@ -178,9 +178,12 @@ navbar:
     Tags:
       icon: fa-regular fa-tags
       path: /tags/
-    知识:
+    # 知识:
+    #   icon: fa-regular fa-book
+    #   path: /knowledge-point/
+    路线:
       icon: fa-regular fa-book
-      path: /knowledge-point/
+      path: /route/
     摄影:
       icon: fa-regular fa-camera-retro
       path: https://www.pexels.com/zh-cn/@waste-code-620749183/
