@@ -728,7 +728,6 @@ public List&lt;String&gt; sayHallo(@RequestBody List&lt;String&gt; names) &#123;
       </categories>
       <tags>
         <tag>exercism</tag>
-        <tag>递归</tag>
       </tags>
   </entry>
   <entry>
