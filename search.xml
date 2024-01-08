@@ -671,6 +671,29 @@ public List&lt;String&gt; sayHallo(@RequestBody List&lt;String&gt; names) &#123;
       </tags>
   </entry>
   <entry>
+    <title>Rust生命周期</title>
+    <url>/waste-code/2024/01/08/Rust%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F/</url>
+    <content><![CDATA[<h2 id="生命周期知识点"><a href="#生命周期知识点" class="headerlink" title="生命周期知识点"></a>生命周期知识点</h2><ol>
+<li>生命周期标记并不会改变任何引用的实际作用域。在通过函数签名指定生命周期参数时，我们并没有改变传入引用或返回真实引用的真实生命周期，而是告诉编译器当不满足此约束条件时，就拒绝编译通过。</li>
+<li>不需要显式标注生命周期的三种规则</li>
+</ol>
+<ul>
+<li>每一个引用参数都会获得独自的生命周期</li>
+<li>若只有一个输入生命周期(函数参数中只有一个引用类型), 那么该生命周期会被赋给所有的输出生命周期</li>
+<li>若存在多个生命周期，且其中一个是<code>&amp;self</code>或<code>&amp;mut self</code>，则<code>&amp;self</code>的生命周期被赋给所有的输出生命周期</li>
+</ul>
+<h2 id="NLL-Non-Lexical-Lifetime"><a href="#NLL-Non-Lexical-Lifetime" class="headerlink" title="NLL(Non-Lexical Lifetime)"></a>NLL(Non-Lexical Lifetime)</h2><p>  引用的生命周期正常来说应该从借用开始一直持续到作用域结束。但在1.31版本后，引用的生命周期从借用处开始，一直持续到最后一次使用的地方。</p>
+<h2 id="再借用"><a href="#再借用" class="headerlink" title="再借用"></a>再借用</h2><div class="highlight-container" data-rel="Rust"><figure class="iseeu highlight rust"><table><tr><td class="code"><pre><span class="line"><span class="keyword">fn</span> <span class="title function_">main</span>() &#123;</span><br><span class="line">    <span class="keyword">let</span> <span class="keyword">mut </span><span class="variable">p</span> = Point &#123; x: <span class="number">0</span>, y: <span class="number">0</span> &#125;;</span><br><span class="line">    <span class="keyword">let</span> <span class="variable">r</span> = &amp;<span class="keyword">mut</span> p;</span><br><span class="line">    <span class="comment">// reborrow! 此时对`r`的再借用不会导致跟上面的借用冲突</span></span><br><span class="line">    <span class="keyword">let</span> <span class="variable">rr</span>: &amp;Point = &amp;*r;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 再借用`rr`最后一次使用发生在这里，在它的生命周期中，我们并没有使用原来的借用`r`，因此不会报错</span></span><br><span class="line">    <span class="built_in">println!</span>(<span class="string">&quot;&#123;:?&#125;&quot;</span>, rr);</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 再借用结束后，才去使用原来的借用`r`</span></span><br><span class="line">    r.<span class="title function_ invoke__">move_to</span>(<span class="number">10</span>, <span class="number">10</span>);</span><br><span class="line">    <span class="built_in">println!</span>(<span class="string">&quot;&#123;:?&#125;&quot;</span>, r);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
+<p><strong>注意：</strong> 可变引用<code>r</code>和不可变引用<code>rr</code>同时存在不报错的原因是，<code>rr</code>并不是对<code>p</code>的不可变引用，而是对<code>r</code>的再借用，因此不会破会借用规则。 对于再借用，在<code>rr</code>的生命周期内，不能再使用原来的借用<code>r</code>。</p>
+]]></content>
+      <categories>
+        <category>Rust</category>
+      </categories>
+      <tags>
+        <tag>生命周期</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Hello World</title>
     <url>/waste-code/2023/05/20/hello-world/</url>
     <content><![CDATA[<p>Welcome to <a class="link"   href="https://hexo.io/" >Hexo <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a>! This is your very first post. Check <a class="link"   href="https://hexo.io/docs/" >documentation <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a> for more info. If you get any problems when using Hexo, you can find the answer in <a class="link"   href="https://hexo.io/docs/troubleshooting.html" >troubleshooting <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a> or you can ask me on <a class="link"   href="https://github.com/hexojs/hexo/issues" >GitHub <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a>.</p>
