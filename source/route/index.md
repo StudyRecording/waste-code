@@ -10,7 +10,8 @@ date: 2023-12-23 17:27:58
 | 通读《Rust实战》 | 2023-11 ~ 2023.11 | Ok |
 | 简单的终端txt阅读命令——[read](https://github.com/StudyRecording/read) | 2023.11 ~ 2023.12 | 60% |
 | [Exercism](https://exercism.org/profiles/StudyRecording)中rust练习题 | 2023.12 ~ 2024.01 | Ok |  
-| 复习rust基础, 通读[《Rust语言圣经》](https://course.rs/about-book.html)高阶部分 | 2024.01~ |  |
+| 通读[《Rust语言圣经》](https://course.rs/about-book.html)进阶部分、难点攻关 | 2024.01 ~ 2024.01 | OK |  
+| [《Rust语言圣经》](https://course.rs/about-book.html)手动实现链表、tokio学习(简单实现一个Redis) | 2024.01 ~ 至今 |  |
 
 
 
@@ -26,5 +27,10 @@ date: 2023-12-23 17:27:58
 - rail fence cipher
 - book store
 - Decimal
-- Knapsack
+- Knapsack  
+{% endnotel %}
+
+{% notel info rust语言圣经 %}
+- Macro宏编程
+- async/await 异步编程  
 {% endnotel %}
