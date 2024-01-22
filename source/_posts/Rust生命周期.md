@@ -4,7 +4,7 @@ tags:
   - 生命周期
 categories:
   - Rust
-excerpt: 这是文章摘要
+excerpt: rust生命周期的简单介绍
 thumbnail: https://pan.mwm.moe/f/vEqc9/12.WEBP
 cover: https://t.mwm.moe/pc
 sticky: 1
